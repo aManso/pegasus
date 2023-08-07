@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-prod-local": "ng build --configuration=production && http-server -c-1 -p 8080 dist/pegasus/",
+    "build-prod": "ng build --configuration=production --output-path docs --base-href /pegasus/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
@@ -39,6 +41,7 @@
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "eslint": "^8.44.0",
+    "http-server": "^14.1.1",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
