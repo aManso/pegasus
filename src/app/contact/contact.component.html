@@ -1,0 +1,53 @@
+<img src="./assets/img/contact/contact-background.png" alt="" class="absolute w-full">
+
+<main class="grid justify-content-center">
+    <p-card  class="p-3 relative col-12 lg:col-6 md:col-8 lg:my-8 sm:my-6">
+        <div class="p-2">
+            <h5 class="font-medium text-xs mb-4 text-center" [ngStyle]="{color:'#6A7682'}">GET IN TOUCH</h5>
+            <h1 class="font-bold text-4xl mb-6 text-center" [ngStyle]="{color:'black'}">Contact us</h1>
+
+            <form [formGroup]="contactForm">
+                <section class="grid mb-2">
+                    <div class="lg:col-6 md:col-6 col-12">
+                        <label for="firstName" class="font-normal text-base" [ngStyle]="{color:'#1B1D21'}">First Name</label>
+                        <input type="text" name="firstName" id="firstName" formControlName="firstName" pInputText placeholder="James" class="w-full mt-2"/>
+                        <small class="text-red-500" *ngIf="contactForm.get('firstName')?.touched && contactForm.get('firstName')?.hasError('required')">Field is required</small>
+                        <small class="text-red-500" *ngIf="contactForm.get('firstName')?.hasError('maxlength')">Field is too long</small>
+                    </div>
+                    <div class="lg:col-6 md:col-6 col-12">
+                        <label for="lastName" class="font-normal text-base" [ngStyle]="{color:'#1B1D21'}">Last Name</label>
+                        <input type="text" name="lastName" id="lastName" formControlName="lastName" pInputText placeholder="Appleseed" class="w-full mt-2"/>
+                        <small class="text-red-500" *ngIf="contactForm.get('lastName')?.touched && contactForm.get('lastName')?.hasError('required')">Field is required</small>
+                        <small class="text-red-500" *ngIf="contactForm.get('lastName')?.hasError('maxlength')">Field is too long</small>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="email" class="font-normal text-base" [ngStyle]="{color:'#1B1D21'}">Email</label>
+                        <input type="email" name="email" id="email" formControlName="email" pInputText placeholder="james.appleseed@company.com" class="w-full mt-2"/>
+                        <small class="text-red-500" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.hasError('required')">Field is required</small>
+                        <small class="text-red-500" *ngIf="contactForm.get('email')?.hasError('email')">Wrong email format</small>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="message" class="font-normal text-base" [ngStyle]="{color:'#1B1D21'}">Message</label>
+                        <textarea pInputTextarea name="message" id="message" formControlName="message" placeholder="Leave us a message..." [autoResize]="true" class="w-full mt-2" style="min-height: 120px;"></textarea>
+                        <small class="text-red-500" *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.hasError('required')">Field is required</small>
+                        <small class="text-red-500" *ngIf="contactForm.get('message')?.hasError('minlength')">Field is too short</small>
+                        <small class="text-red-500" *ngIf="contactForm.get('message')?.hasError('maxlength')">Field is too long</small>
+                    </div>
+                </section>
+
+                <div class="col-12 mb-2 flex align-items-center text-sm" [ngStyle]="{color:'#1B1D21'}">
+                    <p-checkbox name="groupname" value="true" formControlName="terms" class="mr-3"></p-checkbox>
+                    <p class="m-0">I agree to <span class="underline cursor-pointer">Terms of Service</span> and <span class="underline cursor-pointer">Privacy Policy</span></p> 
+                </div>
+
+                <button pButton pRipple label="Send message" class="col-12 p-3 w-full mt-auto" (click)="sendMessage()" [disabled]="contactForm.invalid"></button>
+            </form>
+
+        </div>
+    </p-card>
+</main>
+
+<p-toast></p-toast>
+
