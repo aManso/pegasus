@@ -1,0 +1,31 @@
+<p-table [value]="members" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Joined Date</th>
+            <th>Last Active</th>
+            <th [ngStyle]="{width:'38px'}"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-member>
+        <tr>
+            <td class="flex">
+                <img [src]="member.profilePic" alt="" class="mr-3" [ngStyle]="{width:'42px'}">
+                <div class="flex justify-content-center flex-column">
+                    <span class="font-medium text-base" [ngStyle]="{color:'#212121'}">
+                        {{ member.name }}
+                    </span>
+                    <span class="font-normal text-sm" [ngStyle]="{color:'#6C757D'}">
+                        {{ member.alias }}
+                    </span>
+                </div>
+                
+            </td>
+            <td class="font-normal text-sm" [ngStyle]="{color:'#6C757D'}">{{ member.joinedDate | date}}</td>
+            <td class="font-normal text-sm" [ngStyle]="{color:'#6C757D'}">{{ member.lastActive }}</td>
+            <td [ngStyle]="{width:'38px'}">   
+                <i class="pi pi-ellipsis-v cursor-pointer"></i>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
