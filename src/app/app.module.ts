@@ -23,7 +23,6 @@ import { AppComponent } from './app.component';
     //   multi: true
     // },
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
