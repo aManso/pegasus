@@ -1,11 +1,11 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { PricingService } from './pricing.service';
+import { ContactService } from './contact.service';
 
-describe('PricingService', () => {
-  let service: PricingService;
+describe('ContactService', () => {
+  let service: ContactService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -14,7 +14,7 @@ describe('PricingService', () => {
         HttpClientTestingModule 
       ],
     });
-    service = TestBed.inject(PricingService);
+    service = TestBed.inject(ContactService);
   });
 
   it('should be created', () => {

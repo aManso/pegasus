@@ -7,5 +7,6 @@ import { PRICING_TYPES } from '../constants/pricing.constants';
   styleUrls: ['./princing-overview.component.scss']
 })
 export class PrincingOverviewComponent {
+  public pricingTypes = PRICING_TYPES;
 
 }
