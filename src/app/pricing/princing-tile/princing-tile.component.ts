@@ -47,4 +47,8 @@ export class PrincingTileComponent implements OnInit {
     }, 3000); 
   }
 
+  public trackByFn(index: number) {
+    return index;
+  }
+
 }

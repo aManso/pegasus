@@ -16,13 +16,13 @@
         
         <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
         <ul class="list-none p-0 m-0 flex-grow-1">
-            <li class="flex align-items-center mb-3" *ngFor="let includedFeatures of (pricingDetails | async)?.includedFeatures">
+            <li class="flex align-items-center mb-3" *ngFor="let includedFeatures of (pricingDetails | async)?.includedFeatures; trackBy: trackByFn">
                 <div class="flex align-items-center justify-content-center border-circle mr-3" style="height: 32px; width: 32px;background-color: #D4F4EC;">
                     <i class="pi pi-check" [ngStyle]="{color:'green'}"></i>
                 </div>                
                 <span class="text-900 line-height-3">{{includedFeatures}}</span>
             </li>
-            <li class="flex align-items-center mb-3" *ngFor="let nonIncludedFeatures of (pricingDetails | async)?.nonIncludedFeatures">
+            <li class="flex align-items-center mb-3" *ngFor="let nonIncludedFeatures of (pricingDetails | async)?.nonIncludedFeatures; trackBy: trackByFn">
                 <div class="flex align-items-center justify-content-center border-circle mr-3" style="height: 32px; width: 32px;">
                     <i class="pi pi-minus"></i>
                 </div>
