@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-invite-member',
   templateUrl: './invite-member.component.html',
-  styleUrls: ['./invite-member.component.scss']
+  styleUrls: ['./invite-member.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InviteMemberComponent {
 
