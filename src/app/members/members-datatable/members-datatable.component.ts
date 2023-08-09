@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { MemberInterface } from '../contracts/member.contracts';
 import { MembersService } from '../services/members.service';
 
@@ -8,16 +9,14 @@ import { MembersService } from '../services/members.service';
   styleUrls: ['./members-datatable.component.scss']
 })
 export class MembersDatatableComponent implements OnInit {
-  public members: MemberInterface[] = [];
+  public members: Observable<MemberInterface[]>;
 
   constructor(
     private readonly membersService: MembersService,
   ) {}
 
   ngOnInit(): void {
-      this.membersService.getMembers().subscribe((members: MemberInterface[])=> {
-        this.members = members;
-      })
+    this.members = this.membersService.getMembers();
   }
 
 }

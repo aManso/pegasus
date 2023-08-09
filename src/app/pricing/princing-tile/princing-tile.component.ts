@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { Observable } from 'rxjs';
 import { PRICING_TYPES_TYPE } from '../constants/pricing.constants';
 import { PrincingDetailsInterface } from '../contracts/pricing.contracts';
 import { PricingService } from '../services/pricing.service';
@@ -13,7 +14,7 @@ import { PricingService } from '../services/pricing.service';
 })
 export class PrincingTileComponent implements OnInit {
   @Input() pricingTileType: PRICING_TYPES_TYPE;
-  public pricingDetails: PrincingDetailsInterface;
+  public pricingDetails: Observable<PrincingDetailsInterface>;
 
   constructor(
     private readonly pricingService: PricingService,
@@ -24,10 +25,8 @@ export class PrincingTileComponent implements OnInit {
 
   public ngOnInit(): void {
       if (this.pricingTileType) {
-        this.pricingService.getPriceDetails(this.pricingTileType).subscribe((response: PrincingDetailsInterface)=> {
-          this.pricingDetails = response;
-          this.changeDetectorRef.detectChanges();
-        })
+        this.pricingDetails = this.pricingService.getPriceDetails(this.pricingTileType)
+        this.changeDetectorRef.detectChanges();
       }
   }
 

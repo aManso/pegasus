@@ -7,29 +7,29 @@
             
             <span class="font-semibold text-xl mb-2" [ngStyle]="{color:'var(--primary-color)'}">{{pricingTileType}}</span>
             
-            <span class="font-bold text-6xl mb-2">${{pricingDetails.price}}/month</span>
+            <span class="font-bold text-6xl mb-2">${{(pricingDetails | async)?.price}}/month</span>
             
             <span class="text-base font-normal mb-3" [ngStyle]="{color:'#8593A3'}" >Good starting point</span>
 
-            <div *ngIf="pricingDetails.isMostPopular" class="px-4 py-1 w-10rem mb-2 flex justify-content-center bg-indigo-400 text-white border-round-xl text-sm ">Most Popular</div>
+            <div *ngIf="(pricingDetails | async)?.isMostPopular" class="px-4 py-1 w-10rem mb-2 flex justify-content-center bg-indigo-400 text-white border-round-xl text-sm ">Most Popular</div>
         </section>
         
         <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
         <ul class="list-none p-0 m-0 flex-grow-1">
-            <li class="flex align-items-center mb-3" *ngFor="let includedFeatures of pricingDetails.includedFeatures">
+            <li class="flex align-items-center mb-3" *ngFor="let includedFeatures of (pricingDetails | async)?.includedFeatures">
                 <div class="flex align-items-center justify-content-center border-circle mr-3" style="height: 32px; width: 32px;background-color: #D4F4EC;">
                     <i class="pi pi-check" [ngStyle]="{color:'green'}"></i>
                 </div>                
                 <span class="text-900 line-height-3">{{includedFeatures}}</span>
             </li>
-            <li class="flex align-items-center mb-3" *ngFor="let nonIncludedFeatures of pricingDetails.nonIncludedFeatures">
+            <li class="flex align-items-center mb-3" *ngFor="let nonIncludedFeatures of (pricingDetails | async)?.nonIncludedFeatures">
                 <div class="flex align-items-center justify-content-center border-circle mr-3" style="height: 32px; width: 32px;">
                     <i class="pi pi-minus"></i>
                 </div>
                 <span class="text-900 line-height-3">{{nonIncludedFeatures}}</span>
             </li>
         </ul>
-        <button pButton pRipple label="Get Started" class="p-3 w-full mt-auto" (click)="selectPlan()" [ngClass]="!pricingDetails.isMostPopular ? 'surface-ground text-primary': ''"></button>
+        <button pButton pRipple label="Get Started" class="p-3 w-full mt-auto" (click)="selectPlan()" [ngClass]="!(pricingDetails | async)?.isMostPopular ? 'surface-ground text-primary': ''"></button>
     </div>
 </p-card>
 
